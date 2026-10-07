@@ -1,17 +1,34 @@
-#Escreva uma função chamada inverter_lista(lista) que receba uma lista de elementos e retorne uma nova lista com os mesmos elementos na ordem inversa.
-def inverter_lista(lista):
-    lista_invertida = []
+#Crie uma classe chamada ContaBancaria com os atributos titular e saldo (iniciando em 0.0). Crie dois métodos:
 
-    # Iteração do último índice até o índice 0
-    for i in range(len(lista) - 1, -1, -1):
-        lista_invertida.append(lista[i])
+#depositar(valor): adiciona o valor ao saldo.
 
-    return lista_invertida  # Fora do laço for
+#exibir_saldo(): mostra quanto dinheiro há na conta.
 
+class ContaBancaria:
+    def __init__(self, titular):
+        self.titular = titular
+        self.saldo = 0.0  # O saldo começa zerado por padrão
 
-# Código de teste (fora da função)
-numeros = [10, 20, 30, 40, 50]
-resultado = inverter_lista(numeros)
+    def depositar(self, valor):
+        if valor > 0:
+            self.saldo += valor
+            print(f"Depósito de R$ {valor:.2f} realizado com sucesso!")
+        else:
+            print("O valor do depósito deve ser maior que zero.")
 
-print(f"Original : {numeros}")
-print(f"Invertida : {resultado}")
+    def exibir_saldo(self):
+        print(f"Titular: {self.titular} | Saldo Atual: R$ {self.saldo:.2f}")
+
+# --- Testando a Classe ---
+
+# Criando a conta do Carlos
+minha_conta = ContaBancaria("Carlos")
+
+# Verificando o saldo inicial
+minha_conta.exibir_saldo()
+
+# Fazendo um depósito
+minha_conta.depositar(150.50)
+
+# Verificando o saldo atualizado
+minha_conta.exibir_saldo()
